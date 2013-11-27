@@ -36,7 +36,8 @@ module.exports = (msg, rinfo) ->
     unitStatus: msg.readUInt8(48).toString(2)
 
   # add attributes specific to message type
-  parse["#{reading.msgType}"](msg, reading)
+  if typeof parse["#{reading.msgType}"] is 'function'
+    parse["#{reading.msgType}"](msg, reading)
 
   # do not ack or save if in development
   if process.env.NODE_ENV is 'test'
