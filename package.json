@@ -18,7 +18,8 @@
   "dependencies": {
     "coffee-script": "~1.6.3",
     "lodash": "~2.3.0",
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "firebase": "~0.6.17"
   },
   "devDependencies": {
     "node-dev": "~2.0.1",

@@ -1,8 +1,10 @@
 # # Persist reading to firebase
 
-request = require 'request'
-
+Firebase = require('firebase')
 
 module.exports = (reading) ->
-  request.post "https://homeclub-gateway.firebaseIO.com/readings/#{reading.mobileId}.json?auth=#{process.env.FIREBASE_SECRET}",
-    form: reading
+  console.log '-= PERSISTING READING =-'
+  console.log reading
+  
+  readingForMobileId = new Firebase "https://homeclub-gateway.firebaseio.com/readings/#{reading.mobileId}"
+  readingForMobileId.push reading

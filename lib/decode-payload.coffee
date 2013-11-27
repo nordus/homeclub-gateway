@@ -1,6 +1,7 @@
 # # Decode Payload
 
 ack = require './ack'
+persist = require './persist-reading-to-firebase'
 
 # parse functions for each message type
 parse =
@@ -43,4 +44,5 @@ module.exports = (msg, rinfo) ->
   if process.env.NODE_ENV is 'test'
     return reading
   else
+    persist reading
     ack(msg, rinfo)
