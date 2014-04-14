@@ -3,8 +3,12 @@
 Firebase = require('firebase')
 
 module.exports = (reading) ->
-  console.log '-= PERSISTING READING =-'
-  console.log reading
-  
-  readingForMobileId = new Firebase "https://homeclub-gateway.firebaseio.com/readings/#{reading.mobileId}"
-  readingForMobileId.push reading
+  if reading.msgType is 2
+    if reading.eventCode is 6
+      readingType = 'heartbeats'
+    else
+      readingType = 'power_status_events'
+  else
+    readingType = 'readings'
+  readingForMobileId = new Firebase "https://homeclub.firebaseio.com/#{readingType}/#{reading.mobileId}"
+  readingForMobileId.push().setWithPriority reading, reading.updateTime
