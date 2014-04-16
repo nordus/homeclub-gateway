@@ -1,5 +1,5 @@
 docs: lib
-	@node_modules/.bin/lidoc README.md lib/*.coffee --output docs --github nordus/homeclub-gateway
+	@node_modules/.bin/lidoc lib/*.coffee --output docs --github nordus/homeclub-gateway
 
 docs.deploy: docs
 	@cd docs && \
