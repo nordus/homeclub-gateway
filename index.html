@@ -1,168 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Ack</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" media="all" href="style.css" />
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js'></script>
-</head>
-<body>
-  <div id="area">
-    <div class='file-header'>
-              <a href="https://github.com/nordus/homeclub-gateway/blob/master/lib/ack.coffee">
-          <strong title='lib/ack.coffee'>ack.coffee</strong>
-          <small>View source</small>
-        </a>
-          </div>
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="lib/decode.coffee"><meta name="groc-github-url" content="https://github.com/nordus/homeclub-gateway"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/nordus/homeclub-gateway/blob/master/lib/decode.coffee">lib/decode.coffee</a></div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="decode">Decode</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nv">ack         = </span><span class="nx">require</span> <span class="s1">&#39;./ack&#39;</span>
+<span class="nv">bunyan      = </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bunyan&#39;</span><span class="p">)</span>
+<span class="nv">gelfStream  = </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gelf-stream&#39;</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>gelf-stream comes with Bunyan support</p></div></div><div class="code"><div class="wrapper"><span class="nv">stream      = </span><span class="nx">gelfStream</span><span class="p">.</span><span class="nx">forBunyan</span><span class="p">(</span><span class="s1">&#39;gateway.homeclub.us&#39;</span><span class="p">)</span>
 
-    <table cellpadding="0" cellspacing="0" class="extension-coffee">
-      <thead>
-        <tr>
-          <th class="docs">
-          </th>
-          <th class="code">
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-                                      
-          <tr id="Ack" class="heading">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#Ack">&#182;</a>
-              </div>
-              <h1>Ack</h1>            </td>
-            <td class="code">
-              <div class="highlight"><pre><span class="nv">dgram = </span><span class="nx">require</span> <span class="s1">&#39;dgram&#39;</span></pre></div>            </td>
-          </tr>
-                                      
-          <tr id="section-1" class="">
-            <td class="docs">
-              <div class="pilwrap">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <ul>
+<span class="nv">log = </span><span class="nx">bunyan</span><span class="p">.</span><span class="nx">createLogger</span>
+  <span class="nv">name: </span><span class="s1">&#39;gateway&#39;</span>
+  <span class="nv">streams: </span><span class="p">[</span>
+    <span class="nv">type: </span><span class="s1">&#39;raw&#39;</span>
+    <span class="nv">stream: </span><span class="nx">stream</span>
+  <span class="p">]</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>parse functions for each message type</p></div></div><div class="code"><div class="wrapper"><span class="nv">parse =</span>
+  <span class="s1">&#39;2&#39;</span><span class="o">:</span>  <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-2&#39;</span><span class="p">)</span>
+  <span class="s1">&#39;4&#39;</span><span class="o">:</span>  <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-4&#39;</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
 <li><code>msg</code>   : buffer. raw message from the device</li>
 <li><code>rinfo</code> : object. contains <code>port</code> and <code>address</code> the message originated from</li>
-</ul>            </td>
-            <td class="code">
-              <div class="highlight"><pre><span class="nv">module.exports = </span><span class="nf">(msg, rinfo) -&gt;</span>
+</ul></div></div><div class="code"><div class="wrapper"><span class="nv">module.exports = </span><span class="nf">(msg, rinfo) -&gt;</span>
 
-  <span class="nv">msg = </span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">concat</span> <span class="p">[</span>
-    <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">new</span> <span class="nx">Buffer</span><span class="p">([</span><span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">]))</span>
-    <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
-    <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">new</span> <span class="nx">Buffer</span><span class="p">([</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">]))</span>
-  <span class="p">]</span>
+  <span class="k">try</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>attributes common to all message types</p></div></div><div class="code"><div class="wrapper">    <span class="nv">reading =</span>
+      <span class="nv">mobileId: </span>  <span class="nx">msg</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+      <span class="nv">msgType: </span>   <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span> <span class="mi">10</span>
+      <span class="nv">seqNumber: </span> <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt16BE</span> <span class="mi">11</span>
+      <span class="nv">updateTime: </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt32BE</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+      <span class="nv">timeOfFix: </span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt32BE</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>convert latitude, longitude to decimal</p></div></div><div class="code"><div class="wrapper">      <span class="nv">latitude: </span>  <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readInt32BE</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000000</span><span class="p">)</span>
+      <span class="nv">longitude: </span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readInt32BE</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000000</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>cm to ft</p></div></div><div class="code"><div class="wrapper">      <span class="nv">altitude: </span>  <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readInt32BE</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.0328084</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>cm/second to mph</p></div></div><div class="code"><div class="wrapper">      <span class="nv">speed: </span>     <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt32BE</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.022369362920544023</span><span class="p">)</span>
+      <span class="nv">heading: </span>   <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt16BE</span><span class="p">(</span><span class="mi">37</span><span class="p">)</span>
+      <span class="nv">satellites: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span>
+      <span class="nv">fixStatus: </span> <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+      <span class="nv">carrier: </span>   <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt16BE</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+      <span class="nv">rssi: </span>      <span class="nx">msg</span><span class="p">.</span><span class="nx">readInt16BE</span><span class="p">(</span><span class="mi">43</span><span class="p">)</span>
+      <span class="nv">commState: </span> <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">45</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>to units of 0.1</p></div></div><div class="code"><div class="wrapper">      <span class="nv">hdop: </span>      <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">46</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="nv">inputStates: </span> <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">47</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+      <span class="nv">unitStatus: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">48</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>append attributes specific to message type</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="k">typeof</span> <span class="nx">parse</span><span class="p">[</span><span class="s2">&quot;#{reading.msgType}&quot;</span><span class="p">]</span> <span class="o">is</span> <span class="s1">&#39;function&#39;</span>
+      <span class="nx">parse</span><span class="p">[</span><span class="s2">&quot;#{reading.msgType}&quot;</span><span class="p">](</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">reading</span><span class="p">)</span>
+  </div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>do not ack or save if in development</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">is</span> <span class="s1">&#39;test&#39;</span>
+      <span class="k">return</span> <span class="nx">reading</span>
+    <span class="k">else</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">info</span> <span class="nx">reading</span><span class="p">,</span> <span class="s2">&quot;SUCCESS parsing #{rinfo.size} bytes from #{rinfo.address}&quot;</span>
+      
+      <span class="nx">ack</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">rinfo</span><span class="p">)</span>
 
-  <span class="nv">sock = </span><span class="nx">dgram</span><span class="p">.</span><span class="nx">createSocket</span> <span class="s1">&#39;udp4&#39;</span>
-  <span class="nx">sock</span><span class="p">.</span><span class="nx">bind</span> <span class="mi">2013</span>
-  <span class="nx">sock</span><span class="p">.</span><span class="nx">send</span> <span class="nx">msg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">rinfo</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span> <span class="nx">rinfo</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="nf">(err, bytes) -&gt;</span>
-    <span class="nx">sock</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
 
-</pre></div>            </td>
-          </tr>
-              </tbody>
-    </table>
-
-        <div class='fork-me-on-github'>
-      <a href='https://github.com/nordus/homeclub-gateway'>
-        <span>Fork me on Github</span>
-      </a>
-    </div>
-    
-  </div>
-
-  <div id="sidebar">
-    <div class='header search'>
-      <input type='text' name='search' id='search-box' placeholder='Search...' />
-    </div>
-
-    <div class='header tabs'>
-      <button class='active' data-tab='pages'>Pages</button>
-      <button data-tab='files'>Files</button>
-    </div>
-
-    <div class='scroll-area'>
-      <!-- .multipage here means there will be a sidebar of many pages. -->
-      <div class='list pages multipage'>
-                  
-          <!-- Breadcrumbs -->
-          
-          <!-- The page and its headings -->
-          <ul class='current-page'>
-                        
-            <li class='page level-0'>
-              <a href='#'>Ack</a>
-                          </li>
-          </ul>
-
-          <ul class='reference'>
-
-            <!-- The reference page -->
-            
-            <!-- Subpages of the ref -->
-                                                                                                                      
-                <li class='page  level-1'>
-
-                                                        <a href='lib/decode.html' class=''>Decode</a>
-                  
-                                                    </li>
-                                                                                              
-                <li class='page  level-1'>
-
-                                                        <a href='lib/msg-type-2.html' class=''>Message Type 2</a>
-                  
-                                                    </li>
-                                                                                              
-                <li class='page  level-1'>
-
-                                                        <a href='lib/msg-type-4.html' class=''>Message Type 4</a>
-                  
-                                                    </li>
-                          
-          </ul>
-              </div>
-
-      <div class='list files hidden'>
-        
-        <ul>
-                  <li class='level-1'>
-                                                    <a href='index.html#f' class='item file active'>
-                <i></i>
-                ack.coffee              </a>
-                      </li>
-                                    <li class='level-1'>
-                                                    <button class='item folder '>
-                <i></i>
-                lib              </button>
-              <ul class='hidden'>
-                          <li class='level-2'>
-                                                    <a href='lib/decode.html#f' class='item file '>
-                <i></i>
-                decode.coffee              </a>
-                      </li>
-                                                    <li class='level-2'>
-                                                    <a href='lib/msg-type-2.html#f' class='item file '>
-                <i></i>
-                msg-type-2.coffee              </a>
-                      </li>
-                                                    <li class='level-2'>
-                                                    <a href='lib/msg-type-4.html#f' class='item file '>
-                <i></i>
-                msg-type-4.coffee              </a>
-                      </li>
-                                                        </ul>
-            </li>
-                      </li>
-                                  </ul>
-
-      </div>
-    </div>
-
-  </div>
-
-  <script src='script.js'></script>
-</body>
-</html>
+  <span class="k">catch</span> <span class="nx">e</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">error</span>
+      <span class="nv">err:</span>
+        <span class="nv">message : </span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
+        <span class="nv">name    : </span><span class="nx">e</span><span class="p">.</span><span class="nx">name</span>
+        <span class="nv">stack   : </span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span>
+      <span class="nv">hex: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+      <span class="nv">text: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+    <span class="p">,</span> <span class="s2">&quot;ERROR parsing #{rinfo.size} bytes from #{rinfo.address}&quot;</span></div></div></div></div></body></html>
