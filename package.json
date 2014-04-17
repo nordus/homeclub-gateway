@@ -19,7 +19,6 @@
     "groc": "^0.6.3"
   },
   "devDependencies": {
-    "node-dev": "~2.0.1",
-    "lidoc": "*"
+    "node-dev": "~2.0.1"
   }
 }
