@@ -57,6 +57,58 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "CoffeeScript"
             },
+            "sourcePath": "/home/ubuntu/gateway/lib/ack.coffee",
+            "projectPath": "lib/ack.coffee",
+            "targetPath": "lib/ack",
+            "pageTitle": "lib/ack",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Ack",
+                "slug": "ack",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Ack"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
+            "sourcePath": "/home/ubuntu/gateway/lib/log.coffee",
+            "projectPath": "lib/log.coffee",
+            "targetPath": "lib/log",
+            "pageTitle": "lib/log",
+            "title": "log"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
             "sourcePath": "/home/ubuntu/gateway/lib/msg-type-2.coffee",
             "projectPath": "lib/msg-type-2.coffee",
             "targetPath": "lib/msg-type-2",
