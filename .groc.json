@@ -1,3 +1,4 @@
 {
-    "index": "lib/decode.coffee"
+    "index": "lib/decode.coffee",
+    "github": true
 }

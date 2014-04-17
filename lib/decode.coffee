@@ -1,17 +1,7 @@
 # # Decode
 
-ack         = require './ack'
-bunyan      = require('bunyan')
-gelfStream  = require('gelf-stream')
-# gelf-stream comes with Bunyan support
-stream      = gelfStream.forBunyan('gateway.homeclub.us')
-
-log = bunyan.createLogger
-  name: 'gateway'
-  streams: [
-    type: 'raw'
-    stream: stream
-  ]
+ack = require './ack'
+log = require './log'
 
 # parse functions for each message type
 parse =
@@ -23,7 +13,7 @@ parse =
 module.exports = (msg, rinfo) ->
 
   try
-    # attributes common to all message types
+    # parse attributes common to all message types
     reading =
       mobileId:   msg.slice(2, 7).toString('hex')
       msgType:    msg.readUInt8 10
