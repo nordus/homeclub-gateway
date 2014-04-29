@@ -1,0 +1,3 @@
+CURRENT
+=======
+- fix ack message structure  (should match Google Spreadsheet)
