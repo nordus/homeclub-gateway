@@ -119,6 +119,37 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "CoffeeScript"
             },
+            "sourcePath": "/home/ubuntu/gateway/lib/msg-type-0.coffee",
+            "projectPath": "lib/msg-type-0.coffee",
+            "targetPath": "lib/msg-type-0",
+            "pageTitle": "lib/msg-type-0",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 0",
+                "slug": "message-type-0",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 0"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
             "sourcePath": "/home/ubuntu/gateway/lib/msg-type-2.coffee",
             "projectPath": "lib/msg-type-2.coffee",
             "targetPath": "lib/msg-type-2",
@@ -165,6 +196,37 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "depth": 1
             },
             "title": "Message Type 4"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
+            "sourcePath": "/home/ubuntu/gateway/lib/msg-type-5.coffee",
+            "projectPath": "lib/msg-type-5.coffee",
+            "targetPath": "lib/msg-type-5",
+            "pageTitle": "lib/msg-type-5",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 5",
+                "slug": "message-type-5",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 5"
           },
           "depth": 2,
           "outline": []
