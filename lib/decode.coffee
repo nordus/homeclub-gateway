@@ -19,7 +19,9 @@ module.exports = (msg, rinfo) ->
     reading =
       serviceType         : msg.readUInt8(0)
       msgType             : msg.readUInt8(1)
-      macAddress          : msg.slice(2, 8).toString('hex').toUpperCase()
+      # reversing order per Rod's request
+      # "B82167800700" => "0007806721B8"
+      macAddress          : msg.slice(2, 8).toString('hex').match(/\w{2}/g).reverse().join('').toUpperCase()
       sequenceNumber      : msg.readUInt16BE(8)
       # we receive 10 digit epoch timestamp, JavaScript requires 13
       updateTime          : ( msg.readUInt32BE(10) * 1000 )

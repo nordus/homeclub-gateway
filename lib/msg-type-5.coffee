@@ -6,7 +6,9 @@ module.exports = (msg, reading) ->
   reading.sensorHubBattery    = msg.readUInt8(18)
   reading.sensorHubRssi       = msg.readInt8(19)
   #reading.sensorHubRssiUnused = msg.readInt8(20)
-  reading.sensorHubMacAddress = msg.slice(21, 27).toString('hex').toUpperCase()
+  # reversing order per Rod's request
+  # "B82167800700" => "0007806721B8"
+  reading.sensorHubMacAddress = msg.slice(21, 27).toString('hex').match(/\w{2}/g).reverse().join('').toUpperCase()
   
   # offset of signed values within sensorHubData
   # this is the only value we use and toss out
