@@ -22,12 +22,15 @@ module.exports = (msg, rinfo) ->
       # reversing order per Rod's request
       # "B82167800700" => "0007806721B8"
       macAddress          : msg.slice(2, 8).toString('hex').match(/\w{2}/g).reverse().join('').toUpperCase()
-      sequenceNumber      : msg.readUInt16BE(8)
+      sequenceNumber      : msg.readUInt16LE(8)
       # we receive 10 digit epoch timestamp, JavaScript requires 13
       updateTime          : ( msg.readUInt32BE(10) * 1000 )
       # signed
       rssi                : msg.readInt8(14)
       # rssiUnused        : msg.readInt8(15)
+      
+      # DEBUG
+      hex                 : msg.toString('hex')
 
 
     # append attributes specific to message type
