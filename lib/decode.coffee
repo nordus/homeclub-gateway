@@ -30,6 +30,7 @@ module.exports = (msg, rinfo) ->
       # rssiUnused        : msg.readInt8(15)
       
       # DEBUG
+      # TODO: remove once we solidify message format
       hex                 : msg.toString('hex')
 
 

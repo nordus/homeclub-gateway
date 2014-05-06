@@ -17,11 +17,16 @@ module.exports = (msg, reading) ->
   reading.offsetOfSigned      = msg.slice(27, 28)[0].toString(2)
 
   # `sensorHubData` : array.
+  # encoding is little endian
   # [0..1] : temperature. signed 16-bit integer
   # [2..3] : light.       unsigned 16-bit integer
   # [4..5] : humidity.    unsigned 16-bit integer
   sensorHubData = msg.slice(28)
 
   # with three dots the range excludes the last number
+  #
+  # TODO: only octets specified in offsetOfSigned
+  # should be read as 16-bit signed
+  #
   for idx in [0...reading.numberOfSensors]  
-    reading["sensorHubData#{idx+1}"] = sensorHubData.readUInt16BE(idx*2)
+    reading["sensorHubData#{idx+1}"] = sensorHubData.readInt16LE(idx*2)
