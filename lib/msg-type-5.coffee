@@ -19,9 +19,10 @@ module.exports = (msg, reading) ->
   # `sensorHubData` : array.
   # encoding is little endian
   # [0..1] : temperature. signed 16-bit integer
+  temperatureIndex  = 0
   # [2..3] : light.       unsigned 16-bit integer
   # [4..5] : humidity.    unsigned 16-bit integer
-  sensorHubData = msg.slice(28)
+  sensorHubData     = msg.slice(28)
 
   # with three dots the range excludes the last number
   #
@@ -30,3 +31,8 @@ module.exports = (msg, reading) ->
   #
   for idx in [0...reading.numberOfSensors]  
     reading["sensorHubData#{idx+1}"] = sensorHubData.readInt16LE(idx*2)
+    #if idx is temperatureIndex
+      #reversedBuffer = new Buffer((sensorHubData.slice((idx*2), ((idx*2)+2)).toString('hex').match(/\w{2}/g).reverse()))
+      #reading["sensorHubData#{idx+1}"] = reversedBuffer.readInt16LE 0
+    #else
+      #reading["sensorHubData#{idx+1}"] = sensorHubData.readInt16LE(idx*2)

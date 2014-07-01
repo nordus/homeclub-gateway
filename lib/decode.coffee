@@ -2,6 +2,8 @@
 
 ack = require './ack'
 log = require './log'
+Pusher = require 'pusher'
+pusherConfig = require './pusher-config.json'
 
 # parse functions for each message type
 parse =
@@ -24,7 +26,7 @@ module.exports = (msg, rinfo) ->
       macAddress          : msg.slice(2, 8).toString('hex').match(/\w{2}/g).reverse().join('').toUpperCase()
       sequenceNumber      : msg.readUInt16LE(8)
       # we receive 10 digit epoch timestamp, JavaScript requires 13
-      updateTime          : ( msg.readUInt32BE(10) * 1000 )
+      updateTime          : ( msg.readUInt32LE(10) * 1000 )
       # signed
       rssi                : msg.readInt8(14)
       # rssiUnused        : msg.readInt8(15)
@@ -37,7 +39,8 @@ module.exports = (msg, rinfo) ->
     # append attributes specific to message type
     if typeof parse["#{reading.msgType}"] is 'function'
       parse["#{reading.msgType}"](msg, reading)
-  
+
+
     # do not ack or save if in development
     if process.env.NODE_ENV is 'test'
       return reading
@@ -45,6 +48,22 @@ module.exports = (msg, rinfo) ->
       log.info reading, "SUCCESS parsing #{rinfo.size} bytes from #{rinfo.address}"
       
       ack(msg, rinfo)
+
+      channelName = reading.macAddress
+      gatewayEvent = reading.msgType is 2
+      sensorHubEvent = reading.msgType is 4
+      
+      if sensorHubEvent
+        pusher      = new Pusher(pusherConfig)
+  
+        pusher.trigger channelName, 'sensorHubEvent',
+          "message": reading
+
+      if gatewayEvent
+        pusher      = new Pusher(pusherConfig)
+  
+        pusher.trigger channelName, 'gatewayEvent',
+          "message": reading
 
 
   catch e
