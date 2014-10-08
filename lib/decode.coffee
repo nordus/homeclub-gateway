@@ -4,6 +4,8 @@ ack = require './ack'
 log = require './log'
 Pusher = require 'pusher'
 pusherConfig = require './pusher-config.json'
+request = require 'request'
+postWebhook = require './post-webhook'
 
 # parse functions for each message type
 parse =
@@ -52,14 +54,21 @@ module.exports = (msg, rinfo) ->
       channelName = reading.macAddress
       gatewayEvent = reading.msgType is 2
       sensorHubEvent = reading.msgType is 4
+      url = 'http://homeclub.us/api/webhooks'
       
       if sensorHubEvent
+        url += '/sensor-hub-event'
+        postWebhook url, reading
+
         pusher      = new Pusher(pusherConfig)
   
         pusher.trigger channelName, 'sensorHubEvent',
           "message": reading
 
       if gatewayEvent
+        url += '/network-hub-event'
+        postWebhook url, reading
+
         pusher      = new Pusher(pusherConfig)
   
         pusher.trigger channelName, 'gatewayEvent',
