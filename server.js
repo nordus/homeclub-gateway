@@ -1,7 +1,12 @@
 require('coffee-script');
-require('./lib/main');
+var dgram   = require('dgram');
+var decode  = require('./lib/decode');
 
-// listen for user created event
-require('./lib/firebase-listeners');
+var server  = dgram.createSocket('udp4', decode);
 
-if(process.env.C9_PROJECT) process.env.NODE_ENV = 'test'
+server.on('listening', function() {
+  var address = server.address();
+  console.log("gateway listening on " + address.address + ":" + address.port);
+});
+
+server.bind(2013);

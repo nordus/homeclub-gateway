@@ -1,14 +1,11 @@
 # # Message Type 4
 
 module.exports = (msg, reading) ->
-  reading.userMsgRoute  = msg.readUInt8(49)
-  reading.userMsgId     = msg.readUInt8(50)
-  reading.userMsgLength = msg.readUInt16BE(51)
-  reading.userMsg       = msg.slice(53).toString('hex').toUpperCase().match(/\w{2}/g).join ' '
-  reading.sensorHubId   = msg.slice(53, 61).toString().toUpperCase()
-  reading.temperature   = msg.readInt8(61)
-  reading.batteryPct    = msg.readUInt8(62)
-  reading.bleRssi       = msg.readInt16BE(63)
-
-  if reading.userMsgLength is 13
-    reading.alertText   = msg.slice(65).toString()
+  reading.sensorHubBattery    = msg.readUInt8(16)
+  reading.sensorHubRssi       = msg.readInt8(17)
+  #reading.sensorHubRssiUnused = msg.readInt8(18)
+  # reversing order per Rod's request
+  # "B82167800700" => "0007806721B8"
+  reading.sensorHubMacAddress = msg.slice(19, 25).toString('hex').match(/\w{2}/g).reverse().join('').toUpperCase()
+  reading.sensorEventStart    = msg.readUInt8(25)
+  reading.sensorEventEnd      = msg.readUInt8(26)
