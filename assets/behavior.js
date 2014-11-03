@@ -181,6 +181,37 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "foldPrefix": "^",
               "name": "CoffeeScript"
             },
+            "sourcePath": "/home/ubuntu/gateway/lib/msg-type-3.coffee",
+            "projectPath": "lib/msg-type-3.coffee",
+            "targetPath": "lib/msg-type-3",
+            "pageTitle": "lib/msg-type-3",
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 3",
+                "slug": "message-type-3",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 3"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
             "sourcePath": "/home/ubuntu/gateway/lib/msg-type-4.coffee",
             "projectPath": "lib/msg-type-4.coffee",
             "targetPath": "lib/msg-type-4",
@@ -227,6 +258,27 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "depth": 1
             },
             "title": "Message Type 5"
+          },
+          "depth": 2,
+          "outline": []
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
+            "sourcePath": "/home/ubuntu/gateway/lib/post-webhook.coffee",
+            "projectPath": "lib/post-webhook.coffee",
+            "targetPath": "lib/post-webhook",
+            "pageTitle": "lib/post-webhook",
+            "title": "post-webhook"
           },
           "depth": 2,
           "outline": []
