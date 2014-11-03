@@ -11,6 +11,7 @@ postWebhook = require './post-webhook'
 parse =
   '0': require('./msg-type-0')
   '2': require('./msg-type-2')
+  '3': require('./msg-type-3')
   '4': require('./msg-type-4')
   '5': require('./msg-type-5')
 
