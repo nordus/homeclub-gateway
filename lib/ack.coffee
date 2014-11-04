@@ -21,7 +21,7 @@ module.exports = (incomingMessageFromDevice, rinfo) ->
     # rolls over to 1.
     incomingMessageFromDevice.slice(8, 10)
 
-    # `status`: number. 1: OK, 2: ERROR
+    # `status`: number. 0: ERROR, 1: OK
     new Buffer(["0x01"])
   ]
 
