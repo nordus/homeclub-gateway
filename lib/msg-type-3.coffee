@@ -10,10 +10,9 @@ module.exports = (msg, reading) ->
   # using constructor so regular expression will be recompiled on each iteration
   regEx = new RegExp("\\w{#{charactersPerPayload}}", 'g')
 
-  # `payloads`: array. members vary in length and content
-  # TODO: find out why
-  payloads = msg.slice(19).toString('hex').match(regEx)
+  # `macAddresses`: array
+  macAddresses = msg.slice(19).toString('hex').match(regEx)
 
-  if payloads
-    payloads.forEach (payload, n) ->
-      reading["payload#{n+1}"] = payload
+  if macAddresses
+    macAddresses.forEach (macAddress, n) ->
+      reading["macAddress#{n+1}"] = macAddress
