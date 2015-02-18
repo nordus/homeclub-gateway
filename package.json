@@ -14,9 +14,9 @@
   "license": "BSD",
   "dependencies": {
     "bunyan": "^0.22.3",
-    "coffee-script": "~1.6.3",
+    "coffee-script": "~1.9.0",
     "gelf-stream": "^0.2.2",
-    "groc": "^0.6.3",
+    "groc": "~0.8.0",
     "request": "^2.45.0"
   },
   "devDependencies": {
