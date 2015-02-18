@@ -8,6 +8,7 @@ postWebhook = require './post-webhook'
 # parse functions for each message type
 parse =
   '0': require('./msg-type-0')
+  '1': require('./msg-type-1')
   '2': require('./msg-type-2')
   '3': require('./msg-type-3')
   '4': require('./msg-type-4')

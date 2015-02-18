@@ -2,7 +2,7 @@
 
 bunyan      = require('bunyan')
 gelfStream  = require('gelf-stream')
-stream      = gelfStream.forBunyan('gateway.homeclub.us')
+stream      = gelfStream.forBunyan('127.0.0.1')
 
 log = bunyan.createLogger
   name: 'gateway'
