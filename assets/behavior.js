@@ -11,6 +11,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "language": {
           "nameMatchers": [".coffee", "Cakefile"],
           "pygmentsLexer": "coffee-script",
+          "highlightJS": "coffeescript",
           "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
           "strictMultiLineEnd": false,
           "singleLineComment": ["#"],
@@ -22,20 +23,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "lib/decode.coffee",
         "targetPath": "index",
         "pageTitle": "index",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Decode",
-            "slug": "decode",
-            "isFileHeader": true
-          },
-          "depth": 1
-        },
-        "title": "Decode"
+        "title": "index"
       },
-      "depth": 1,
-      "outline": []
+      "depth": 1
     }, {
       "type": "folder",
       "data": {
@@ -50,6 +40,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -61,26 +52,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/ack.coffee",
             "targetPath": "lib/ack",
             "pageTitle": "lib/ack",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Ack",
-                "slug": "ack",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Ack"
+            "title": "ack"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -92,26 +73,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/log.coffee",
             "targetPath": "lib/log",
             "pageTitle": "lib/log",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Logger",
-                "slug": "logger",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Logger"
+            "title": "log"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -123,26 +94,37 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-0.coffee",
             "targetPath": "lib/msg-type-0",
             "pageTitle": "lib/msg-type-0",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Message Type 0",
-                "slug": "message-type-0",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Message Type 0"
+            "title": "msg-type-0"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
+              "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
+              "strictMultiLineEnd": false,
+              "singleLineComment": ["#"],
+              "ignorePrefix": "}",
+              "foldPrefix": "^",
+              "name": "CoffeeScript"
+            },
+            "sourcePath": "/home/ubuntu/gateway/lib/msg-type-1.coffee",
+            "projectPath": "lib/msg-type-1.coffee",
+            "targetPath": "lib/msg-type-1",
+            "pageTitle": "lib/msg-type-1",
+            "title": "msg-type-1"
+          },
+          "depth": 2
+        }, {
+          "type": "file",
+          "data": {
+            "language": {
+              "nameMatchers": [".coffee", "Cakefile"],
+              "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -154,26 +136,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-2.coffee",
             "targetPath": "lib/msg-type-2",
             "pageTitle": "lib/msg-type-2",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Message Type 2",
-                "slug": "message-type-2",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Message Type 2"
+            "title": "msg-type-2"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -185,26 +157,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-3.coffee",
             "targetPath": "lib/msg-type-3",
             "pageTitle": "lib/msg-type-3",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Message Type 3",
-                "slug": "message-type-3",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Message Type 3"
+            "title": "msg-type-3"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -216,26 +178,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-4.coffee",
             "targetPath": "lib/msg-type-4",
             "pageTitle": "lib/msg-type-4",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Message Type 4",
-                "slug": "message-type-4",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Message Type 4"
+            "title": "msg-type-4"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -247,26 +199,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-5.coffee",
             "targetPath": "lib/msg-type-5",
             "pageTitle": "lib/msg-type-5",
-            "firstHeader": {
-              "type": "heading",
-              "data": {
-                "level": 1,
-                "title": "Message Type 5",
-                "slug": "message-type-5",
-                "isFileHeader": true
-              },
-              "depth": 1
-            },
-            "title": "Message Type 5"
+            "title": "msg-type-5"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }, {
           "type": "file",
           "data": {
             "language": {
               "nameMatchers": [".coffee", "Cakefile"],
               "pygmentsLexer": "coffee-script",
+              "highlightJS": "coffeescript",
               "multiLineComment": ["###*", " *", " ###", "###", "#", "###", "###*", "#", "###"],
               "strictMultiLineEnd": false,
               "singleLineComment": ["#"],
@@ -280,8 +222,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "pageTitle": "lib/post-webhook",
             "title": "post-webhook"
           },
-          "depth": 2,
-          "outline": []
+          "depth": 2
         }
       ]
     }
@@ -508,7 +449,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
       if (metaInfo.documentPath === 'index') {
         sourceURL = metaInfo.githubURL;
       } else {
-        sourceURL = "" + metaInfo.githubURL + "/blob/master/" + metaInfo.projectPath;
+        sourceURL = metaInfo.githubURL + "/blob/master/" + metaInfo.projectPath;
       }
       nav$.find('.tools').prepend("<li class=\"github\">\n  <a href=\"" + sourceURL + "\" title=\"View source on GitHub\">\n    View source on GitHub\n  </a>\n</li>");
     }

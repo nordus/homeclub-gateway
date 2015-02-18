@@ -1,65 +1,53 @@
-<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="lib/decode.coffee"><meta name="groc-github-url" content="https://github.com/nordus/homeclub-gateway"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/nordus/homeclub-gateway/blob/master/lib/decode.coffee">lib/decode.coffee</a></div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="decode">Decode</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nv">ack = </span><span class="nx">require</span> <span class="s1">&#39;./ack&#39;</span>
-<span class="nv">log = </span><span class="nx">require</span> <span class="s1">&#39;./log&#39;</span>
-<span class="nv">Pusher = </span><span class="nx">require</span> <span class="s1">&#39;pusher&#39;</span>
-<span class="nv">pusherConfig = </span><span class="nx">require</span> <span class="s1">&#39;./pusher-config.json&#39;</span>
-<span class="nv">request = </span><span class="nx">require</span> <span class="s1">&#39;request&#39;</span>
-<span class="nv">postWebhook = </span><span class="nx">require</span> <span class="s1">&#39;./post-webhook&#39;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>parse functions for each message type</p></div></div><div class="code"><div class="wrapper"><span class="nv">parse =</span>
-  <span class="s1">&#39;0&#39;</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-0&#39;</span><span class="p">)</span>
-  <span class="s1">&#39;2&#39;</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-2&#39;</span><span class="p">)</span>
-  <span class="s1">&#39;3&#39;</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-3&#39;</span><span class="p">)</span>
-  <span class="s1">&#39;4&#39;</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-4&#39;</span><span class="p">)</span>
-  <span class="s1">&#39;5&#39;</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./msg-type-5&#39;</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="lib/decode.coffee"><meta name="groc-github-url" content="https://github.com/nordus/homeclub-gateway"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/nordus/homeclub-gateway/blob/master/lib/decode.coffee">lib/decode.coffee</a></div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="decode">Decode</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper">ack = <span class="hljs-built_in">require</span> <span class="hljs-string">'./ack'</span>
+log = <span class="hljs-built_in">require</span> <span class="hljs-string">'./log'</span>
+request = <span class="hljs-built_in">require</span> <span class="hljs-string">'request'</span>
+postWebhook = <span class="hljs-built_in">require</span> <span class="hljs-string">'./post-webhook'</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>parse functions for each message type</p></div></div><div class="code"><div class="wrapper">parse =
+  <span class="hljs-string">'0'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-0'</span>)
+  <span class="hljs-string">'1'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-1'</span>)
+  <span class="hljs-string">'2'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-2'</span>)
+  <span class="hljs-string">'3'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-3'</span>)
+  <span class="hljs-string">'4'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-4'</span>)
+  <span class="hljs-string">'5'</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./msg-type-5'</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
 <li><code>msg</code>   : buffer. raw message from the device</li>
 <li><code>rinfo</code> : object. contains <code>port</code> and <code>address</code> the message originated from</li>
-</ul></div></div><div class="code"><div class="wrapper"><span class="nv">module.exports = </span><span class="nf">(msg, rinfo) -&gt;</span>
+</ul></div></div><div class="code"><div class="wrapper"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(msg, rinfo)</span> -&gt;</span>
 
-  <span class="k">try</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>parse attributes common to all message types</p></div></div><div class="code"><div class="wrapper">    <span class="nv">reading =</span>
-      <span class="nv">serviceType         : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-      <span class="nv">msgType             : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>reversing order per Rod's request
-"B82167800700" => "0007806721B8"</p></div></div><div class="code"><div class="wrapper">      <span class="nv">macAddress          : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\w{2}/g</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
-      <span class="nv">sequenceNumber      : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt16LE</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>we receive 10 digit epoch timestamp, JavaScript requires 13</p></div></div><div class="code"><div class="wrapper">      <span class="nv">updateTime          : </span><span class="p">(</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">readUInt32LE</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>signed</p></div></div><div class="code"><div class="wrapper">      <span class="nv">rssi                : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">readInt8</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>rssiUnused        : msg.readInt8(15)</p></div></div><div class="code"><div class="wrapper">      </div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>DEBUG
-TODO: remove once we solidify message format</p></div></div><div class="code"><div class="wrapper">      <span class="nv">hex                 : </span><span class="nx">msg</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>append attributes specific to message type</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="k">typeof</span> <span class="nx">parse</span><span class="p">[</span><span class="s2">&quot;#{reading.msgType}&quot;</span><span class="p">]</span> <span class="o">is</span> <span class="s1">&#39;function&#39;</span>
-      <span class="nx">parse</span><span class="p">[</span><span class="s2">&quot;#{reading.msgType}&quot;</span><span class="p">](</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">reading</span><span class="p">)</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>do not ack or save if in development</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">is</span> <span class="s1">&#39;test&#39;</span>
-      <span class="k">return</span> <span class="nx">reading</span>
-    <span class="k">else</span>
-      <span class="nx">log</span><span class="p">.</span><span class="nx">info</span> <span class="nx">reading</span><span class="p">,</span> <span class="s2">&quot;SUCCESS parsing #{rinfo.size} bytes from #{rinfo.address}&quot;</span>
+  <span class="hljs-keyword">try</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>parse attributes common to all message types</p></div></div><div class="code"><div class="wrapper">    reading =
+      serviceType         : msg.readUInt8(<span class="hljs-number">0</span>)
+      msgType             : msg.readUInt8(<span class="hljs-number">1</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>reversing order per Rod&#39;s request
+&quot;B82167800700&quot; =&gt; &quot;0007806721B8&quot;</p></div></div><div class="code"><div class="wrapper">      macAddress          : msg.slice(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>).toString(<span class="hljs-string">'hex'</span>).match(<span class="hljs-regexp">/\w{2}/g</span>).reverse().join(<span class="hljs-string">''</span>).toUpperCase()
+      sequenceNumber      : msg.readUInt16LE(<span class="hljs-number">8</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>we receive 10 digit epoch timestamp, JavaScript requires 13</p></div></div><div class="code"><div class="wrapper">      updateTime          : ( msg.readUInt32LE(<span class="hljs-number">10</span>) * <span class="hljs-number">1000</span> )</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>signed</p></div></div><div class="code"><div class="wrapper">      rssi                : msg.readInt8(<span class="hljs-number">14</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>rssiUnused        : msg.readInt8(15)</p></div></div><div class="code"><div class="wrapper">      </div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>DEBUG
+TODO: remove once we solidify message format</p></div></div><div class="code"><div class="wrapper">      hex                 : msg.toString(<span class="hljs-string">'hex'</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>append attributes specific to message type</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> parse[<span class="hljs-string">"<span class="hljs-subst">#{reading.msgType}</span>"</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
+      parse[<span class="hljs-string">"<span class="hljs-subst">#{reading.msgType}</span>"</span>](msg, reading)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>do not ack or save if in development</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-keyword">if</span> process.env.NODE_ENV <span class="hljs-keyword">is</span> <span class="hljs-string">'test'</span>
+      <span class="hljs-keyword">return</span> reading
+    <span class="hljs-keyword">else</span>
+      log.info reading, <span class="hljs-string">"SUCCESS parsing <span class="hljs-subst">#{rinfo.size}</span> bytes from <span class="hljs-subst">#{rinfo.address}</span>"</span>
       
-      <span class="nx">ack</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">rinfo</span><span class="p">)</span>
+      ack(msg, rinfo)
 
-      <span class="nv">channelName = </span><span class="nx">reading</span><span class="p">.</span><span class="nx">macAddress</span>
-      <span class="nv">gatewayEvent = </span><span class="nx">reading</span><span class="p">.</span><span class="nx">msgType</span> <span class="o">is</span> <span class="mi">2</span>
-      <span class="nv">sensorHubEvent = </span><span class="nx">reading</span><span class="p">.</span><span class="nx">msgType</span> <span class="o">is</span> <span class="mi">4</span>
-      <span class="nv">url = </span><span class="s1">&#39;http://homeclub.us/api/webhooks&#39;</span>
+      gatewayEvent = reading.msgType <span class="hljs-keyword">is</span> <span class="hljs-number">2</span>
+      sensorHubEvent = reading.msgType <span class="hljs-keyword">is</span> <span class="hljs-number">4</span>
+      url = <span class="hljs-string">'http://homeclub.us/api/webhooks'</span>
       
-      <span class="k">if</span> <span class="nx">sensorHubEvent</span>
-        <span class="nx">url</span> <span class="o">+=</span> <span class="s1">&#39;/sensor-hub-event&#39;</span>
-        <span class="nx">postWebhook</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">reading</span>
+      <span class="hljs-keyword">if</span> sensorHubEvent
+        url += <span class="hljs-string">'/sensor-hub-event'</span>
+        postWebhook url, reading
 
-        <span class="nv">pusher      = </span><span class="k">new</span> <span class="nx">Pusher</span><span class="p">(</span><span class="nx">pusherConfig</span><span class="p">)</span>
-  
-        <span class="nx">pusher</span><span class="p">.</span><span class="nx">trigger</span> <span class="nx">channelName</span><span class="p">,</span> <span class="s1">&#39;sensorHubEvent&#39;</span><span class="p">,</span>
-          <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="nx">reading</span>
-
-      <span class="k">if</span> <span class="nx">gatewayEvent</span>
-        <span class="nx">url</span> <span class="o">+=</span> <span class="s1">&#39;/network-hub-event&#39;</span>
-        <span class="nx">postWebhook</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">reading</span>
-
-        <span class="nv">pusher      = </span><span class="k">new</span> <span class="nx">Pusher</span><span class="p">(</span><span class="nx">pusherConfig</span><span class="p">)</span>
-  
-        <span class="nx">pusher</span><span class="p">.</span><span class="nx">trigger</span> <span class="nx">channelName</span><span class="p">,</span> <span class="s1">&#39;gatewayEvent&#39;</span><span class="p">,</span>
-          <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="nx">reading</span>
+      <span class="hljs-keyword">if</span> gatewayEvent
+        url += <span class="hljs-string">'/network-hub-event'</span>
+        postWebhook url, reading
 
 
-  <span class="k">catch</span> <span class="nx">e</span>
-    <span class="nv">logObject =</span>
-      <span class="nv">err:</span>
-        <span class="nv">message : </span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
-        <span class="nv">name    : </span><span class="nx">e</span><span class="p">.</span><span class="nx">name</span>
-        <span class="nv">stack   : </span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span>
-      <span class="nv">hex: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
-      <span class="nv">text: </span><span class="nx">msg</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+  <span class="hljs-keyword">catch</span> e
+    logObject =
+      <span class="hljs-attribute">err</span>:
+        message : e.message
+        name    : e.name
+        stack   : e.stack
+      <span class="hljs-attribute">hex</span>: msg.toString(<span class="hljs-string">'hex'</span>)
+      <span class="hljs-attribute">text</span>: msg.toString()
     
-    <span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">is</span> <span class="s1">&#39;test&#39;</span>
-      <span class="k">return</span> <span class="nx">logObject</span>
-    <span class="k">else</span>
-      <span class="nx">log</span><span class="p">.</span><span class="nx">error</span> <span class="nx">logObject</span><span class="p">,</span> <span class="s2">&quot;ERROR parsing #{rinfo.size} bytes from #{rinfo.address}&quot;</span></div></div></div></div></body></html>
+    <span class="hljs-keyword">if</span> process.env.NODE_ENV <span class="hljs-keyword">is</span> <span class="hljs-string">'test'</span>
+      <span class="hljs-keyword">return</span> logObject
+    <span class="hljs-keyword">else</span>
+      log.error logObject, <span class="hljs-string">"ERROR parsing <span class="hljs-subst">#{rinfo.size}</span> bytes from <span class="hljs-subst">#{rinfo.address}</span>"</span></div></div></div></div></body></html>
