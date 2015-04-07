@@ -1,18 +1,18 @@
 <!DOCTYPE html><html lang="en"><head><title>lib/msg-type-1</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="lib/msg-type-1"><meta name="groc-project-path" content="lib/msg-type-1.coffee"><meta name="groc-github-url" content="https://github.com/nordus/homeclub-gateway"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/nordus/homeclub-gateway/blob/master/lib/msg-type-1.coffee">lib/msg-type-1.coffee</a></div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="message-type-1">Message Type 1</h1></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(msg, reading)</span> -&gt;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><code>networkHubSystemMessage</code>   : integer. see lookup table</p>
-<ol>
-<li>No message</li>
-<li>SUCCESS: Updated SH settings based on HC2</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>TBD</li>
-<li>ERROR: Not able to update SH settings based on HC2</li>
-<li>TBD</li>
-</ol></div></div><div class="code"><div class="wrapper">  reading.networkHubSystemMessage = msg.readUInt8(<span class="hljs-number">16</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
+<ul>
+<li><code>0</code>                         : &quot;No message&quot;</li>
+<li><code>1</code>                         : &quot;SUCCESS: Updated SH settings based on HC2&quot;</li>
+<li><code>2</code>                         : &quot;TBD&quot;</li>
+<li><code>3</code>                         : &quot;TBD&quot;</li>
+<li><code>4</code>                         : &quot;TBD&quot;</li>
+<li><code>5</code>                         : &quot;TBD&quot;</li>
+<li><code>6</code>                         : &quot;TBD&quot;</li>
+<li><code>7</code>                         : &quot;TBD&quot;</li>
+<li><code>8</code>                         : &quot;TBD&quot;</li>
+<li><code>9</code>                         : &quot;TBD&quot;</li>
+<li><code>10</code>                        : &quot; ERROR: Not able to update SH settings based on HC2&quot;</li>
+<li><code>11</code>                        : &quot;TBD&quot;</li>
+</ul></div></div><div class="code"><div class="wrapper">  reading.networkHubSystemMessage = msg.readUInt8(<span class="hljs-number">16</span>)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
 <li><code>sensorHubSystemMessage</code>    : integer. see lookup table below</li>
 <li><code>0</code>                         : &quot;no message&quot;</li>
 <li><code>1</code>                         : &quot;SUCCESS: Received SMS&quot;</li>
