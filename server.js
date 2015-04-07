@@ -1,4 +1,7 @@
-require('coffee-script');
+var trans = require('coffee-script');
+if (trans.register) {
+  trans.register();
+}
 var dgram   = require('dgram');
 var decode  = require('./lib/decode');
 
