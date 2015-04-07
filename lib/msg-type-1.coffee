@@ -2,19 +2,19 @@
 
 module.exports = (msg, reading) ->
 
-  # - `networkHubSystemMessage`   : integer. see lookup table
-  # - `0`                         : "No message"
-  # - `1`                         : "SUCCESS: Updated SH settings based on HC2"
-  # - `2`                         : "TBD"
-  # - `3`                         : "TBD"
-  # - `4`                         : "TBD"
-  # - `5`                         : "TBD"
-  # - `6`                         : "TBD"
-  # - `7`                         : "TBD"
-  # - `8`                         : "TBD"
-  # - `9`                         : "TBD"
-  # - `10`                        : " ERROR: Not able to update SH settings based on HC2"
-  # - `11`                        : "TBD"
+  # `networkHubSystemMessage`   : integer. see lookup table
+  # 0. No message
+  # 1. SUCCESS: Updated SH settings based on HC2
+  # 2. TBD
+  # 3. TBD
+  # 4. TBD
+  # 5. TBD
+  # 6. TBD
+  # 7. TBD
+  # 8. TBD
+  # 9. TBD
+  # 10. ERROR: Not able to update SH settings based on HC2
+  # 11. TBD
   reading.networkHubSystemMessage = msg.readUInt8(16)
 
 
@@ -41,7 +41,6 @@ module.exports = (msg, reading) ->
   charactersPerPayload = reading.bytesPerPayload * 2
 
 
-  # using constructor so regular expression will be recompiled on each iteration
   regEx = new RegExp("\\w{#{charactersPerPayload}}", 'g')
 
 
