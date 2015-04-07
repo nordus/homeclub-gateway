@@ -2,7 +2,7 @@
 
 module.exports = (msg, reading) ->
 
-  # `networkHubSystemMessage`   : integer. see lookup table
+  # `networkHubSystemMessage`   : integer. see lookup table below.
   # - `0`                         : "No message"
   # - `1`                         : "SUCCESS: Updated SH settings based on HC2"
   # - `2`                         : "TBD"
@@ -18,7 +18,7 @@ module.exports = (msg, reading) ->
   reading.networkHubSystemMessage = msg.readUInt8(16)
 
 
-  # - `sensorHubSystemMessage`    : integer. see lookup table below
+  # `sensorHubSystemMessage`      : integer. see lookup table below.
   # - `0`                         : "no message"
   # - `1`                         : "SUCCESS: Received SMS"
   # - `2`                         : "SUCCESS: Reset Network Hub"
@@ -35,7 +35,7 @@ module.exports = (msg, reading) ->
 
 
   # - `bytesPerPayload`   : integer.
-  # NOTE: bytesPerPayload is also referred to as "Payload size in Bytes"
+  # NOTE: bytesPerPayload is also documented as "Payload size in Bytes"
   reading.bytesPerPayload     = msg.readUInt8(18)
 
   charactersPerPayload = reading.bytesPerPayload * 2
