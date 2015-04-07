@@ -54,6 +54,22 @@ module.exports = (msg, rinfo) ->
       gatewayEvent = reading.msgType is 2
       sensorHubEvent = reading.msgType is 4
       url = 'http://homeclub.us/api/webhooks'
+
+      # msgType1 - ACK or outcome. SMS initiated.
+      if reading.msgType is 1
+        # `sensorHubSystemMessage`  : integer.  indicates success / fail of SMS delivery.
+        smsInitiatedAck     = reading.sensorHubSystemMessage
+        # `networkHubSystemMessage` : integer.  indicates success / fail of HC2.
+        smsInitiatedOutcome = reading.networkHubSystemMessage
+
+        if smsInitiatedAck
+          url += '/sms-initiated-ack'
+
+        if smsInitiatedOutcome
+          url += '/sms-initiated-outcome'
+
+        postWebhook url, reading
+
       
       if sensorHubEvent
         url += '/sensor-hub-event'
