@@ -28,9 +28,9 @@ TODO: remove once we solidify message format</p></div></div><div class="code"><d
       gatewayEvent = reading.msgType <span class="hljs-keyword">is</span> <span class="hljs-number">2</span>
       sensorHubEvent = reading.msgType <span class="hljs-keyword">is</span> <span class="hljs-number">4</span>
       url = <span class="hljs-string">'http://homeclub.us/api/webhooks'</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><code>msgType1</code>  : ACK or outcome. SMS initiated.</p></div></div><div class="code"><div class="wrapper">      <span class="hljs-keyword">if</span> reading.msgType <span class="hljs-keyword">is</span> <span class="hljs-number">1</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
-<li><code>sensorHubSystemMessage</code>  : integer.  indicates success / fail of SMS delivery.</li>
+<li><code>sensorHubSystemMessage</code>  : integer.  any value other than 0 indicates success / fail of SMS delivery.</li>
 </ul></div></div><div class="code"><div class="wrapper">        smsInitiatedAck     = reading.sensorHubSystemMessage</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><ul>
-<li><code>networkHubSystemMessage</code> : integer.  indicates success / fail of HC2.</li>
+<li><code>networkHubSystemMessage</code> : integer.  any value other than 0 indicates success / fail of HC2.</li>
 </ul></div></div><div class="code"><div class="wrapper">        smsInitiatedOutcome = reading.networkHubSystemMessage
 
         <span class="hljs-keyword">if</span> smsInitiatedAck
