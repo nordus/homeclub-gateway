@@ -36,7 +36,7 @@ module.exports = (msg, reading) ->
   reading.sensorHubSystemMessage  = msg.readUInt8(17)
 
 
-  # `bytesPerPayload`   : integer.
+  # `bytesPerPayload`             : integer.
   # NOTE: bytesPerPayload is also documented as "Payload size in Bytes"
 
   reading.bytesPerPayload     = msg.readUInt8(18)
