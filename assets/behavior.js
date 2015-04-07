@@ -23,9 +23,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "lib/decode.coffee",
         "targetPath": "index",
         "pageTitle": "index",
-        "title": "index"
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Decode",
+            "slug": "decode",
+            "isFileHeader": true
+          },
+          "depth": 1
+        },
+        "title": "Decode"
       },
-      "depth": 1
+      "depth": 1,
+      "outline": []
     }, {
       "type": "folder",
       "data": {
@@ -52,9 +63,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/ack.coffee",
             "targetPath": "lib/ack",
             "pageTitle": "lib/ack",
-            "title": "ack"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Ack",
+                "slug": "ack",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Ack"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -73,9 +95,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/log.coffee",
             "targetPath": "lib/log",
             "pageTitle": "lib/log",
-            "title": "log"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Logger",
+                "slug": "logger",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Logger"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -94,9 +127,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-0.coffee",
             "targetPath": "lib/msg-type-0",
             "pageTitle": "lib/msg-type-0",
-            "title": "msg-type-0"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 0",
+                "slug": "message-type-0",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 0"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -115,9 +159,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-1.coffee",
             "targetPath": "lib/msg-type-1",
             "pageTitle": "lib/msg-type-1",
-            "title": "msg-type-1"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 1",
+                "slug": "message-type-1",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 1"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -136,9 +191,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-2.coffee",
             "targetPath": "lib/msg-type-2",
             "pageTitle": "lib/msg-type-2",
-            "title": "msg-type-2"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 2",
+                "slug": "message-type-2",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 2"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -157,9 +223,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-3.coffee",
             "targetPath": "lib/msg-type-3",
             "pageTitle": "lib/msg-type-3",
-            "title": "msg-type-3"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 3",
+                "slug": "message-type-3",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 3"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -178,9 +255,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-4.coffee",
             "targetPath": "lib/msg-type-4",
             "pageTitle": "lib/msg-type-4",
-            "title": "msg-type-4"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 4",
+                "slug": "message-type-4",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 4"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -199,9 +287,20 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "projectPath": "lib/msg-type-5.coffee",
             "targetPath": "lib/msg-type-5",
             "pageTitle": "lib/msg-type-5",
-            "title": "msg-type-5"
+            "firstHeader": {
+              "type": "heading",
+              "data": {
+                "level": 1,
+                "title": "Message Type 5",
+                "slug": "message-type-5",
+                "isFileHeader": true
+              },
+              "depth": 1
+            },
+            "title": "Message Type 5"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }, {
           "type": "file",
           "data": {
@@ -222,7 +321,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "pageTitle": "lib/post-webhook",
             "title": "post-webhook"
           },
-          "depth": 2
+          "depth": 2,
+          "outline": []
         }
       ]
     }
