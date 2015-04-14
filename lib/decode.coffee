@@ -1,7 +1,11 @@
 # # Decode
 
+options = require('minimist')
+  .default('graylog_server_ip', (process.env.GRAYLOG_SERVER_IP ? '127.0.0.1'))
+  .argv
+
 ack = require './ack'
-log = require './log'
+log = require('./log')(options.graylog_server_ip)
 request = require 'request'
 postWebhook = require './post-webhook'
 
