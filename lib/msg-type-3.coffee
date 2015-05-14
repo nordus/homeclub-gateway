@@ -15,4 +15,6 @@ module.exports = (msg, reading) ->
 
   if macAddresses
     macAddresses.forEach (macAddress, n) ->
-      reading["macAddress#{n+1}"] = macAddress
+      # incoming MAC addresses are reverse byte
+      macAddressFormatted = macAddress.match(/\w{2}/g).reverse().join('').toUpperCase()
+      reading["macAddress#{n+1}"] = macAddressFormatted
