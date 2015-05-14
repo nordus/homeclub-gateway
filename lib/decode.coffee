@@ -64,11 +64,11 @@ module.exports = (msg, rinfo) ->
       # `msgType1`  : ACK or outcome. SMS initiated.
       if reading.msgType is 1
 
-        # - `sensorHubSystemMessage` : integer.  ACK from SMS.
-        smsInitiatedAck     = reading.sensorHubSystemMessage
+        # - `networkHubSystemMessage` : integer.  ACK from SMS.
+        smsInitiatedAck     = reading.networkHubSystemMessage
 
-        # - `networkHubSystemMessage`  : integer.  outcome of HC2.
-        smsInitiatedOutcome = reading.networkHubSystemMessage
+        # - `sensorHubSystemMessage`  : integer.  outcome of HC2.
+        smsInitiatedOutcome = reading.sensorHubSystemMessage
 
         if smsInitiatedAck
           url += '/sms-initiated-ack'
