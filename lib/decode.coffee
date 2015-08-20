@@ -57,7 +57,7 @@ module.exports = (msg, rinfo) ->
       
       ack(msg, rinfo)
 
-      gatewayEvent = reading.msgType is 2
+      gatewayEvent = reading.msgType is 2 and reading.gatewayEventCode in [1,2]
       sensorHubEvent = reading.msgType is 4
       url = 'http://homeclub.us/api/webhooks'
 
