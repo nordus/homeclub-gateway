@@ -11,6 +11,13 @@ log = require('./log')(options.graylog_server_ip)
 request = require 'request'
 postWebhook = require './post-webhook'
 
+carriers  = {}
+request 'http://homeclub.us/api/carriers-by-network-hub',
+  json  : true
+, ( err, resp, body ) ->
+  unless err
+    carriers  = body
+
 # parse functions for each message type
 parse =
   '0': require('./msg-type-0')
@@ -38,7 +45,7 @@ module.exports = (msg, rinfo) ->
       # signed
       rssi                : msg.readInt8(14)
       # rssiUnused        : msg.readInt8(15)
-      
+
       # DEBUG
       # TODO: remove once we solidify message format
       hex                 : msg.toString('hex')
@@ -49,12 +56,17 @@ module.exports = (msg, rinfo) ->
       parse["#{reading.msgType}"](msg, reading)
 
 
+    # append carrier
+    if carrier = carriers[reading.macAddress]
+      reading.carrier = carrier
+
+
     # do not ack or save if in development
     if process.env.NODE_ENV is 'test'
       return reading
     else
       log.info reading, "SUCCESS parsing #{rinfo.size} bytes from #{rinfo.address}"
-      
+
       ack(msg, rinfo)
 
       gatewayEvent = reading.msgType is 2 and reading.gatewayEventCode in [1,2]
@@ -78,7 +90,7 @@ module.exports = (msg, rinfo) ->
 
         postWebhook url, reading
 
-      
+
       if sensorHubEvent
         url += '/sensor-hub-event'
         postWebhook url, reading
@@ -96,7 +108,7 @@ module.exports = (msg, rinfo) ->
         stack   : e.stack
       hex: msg.toString('hex')
       text: msg.toString()
-    
+
     if process.env.NODE_ENV is 'test'
       return logObject
     else
