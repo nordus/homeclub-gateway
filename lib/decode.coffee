@@ -10,6 +10,8 @@ ack = require './ack'
 log = require('./log')(options.graylog_server_ip)
 request = require 'request'
 postWebhook = require './post-webhook'
+Firebase  = require 'firebase'
+queueRef  = new Firebase 'https://homeclub-q.firebaseio.com/queue/tasks'
 
 carriers  = {}
 request 'http://homeclub.us/api/carriers-by-network-hub',
@@ -66,6 +68,8 @@ module.exports = (msg, rinfo) ->
       return reading
     else
       log.info reading, "SUCCESS parsing #{rinfo.size} bytes from #{rinfo.address}"
+
+      queueRef.push reading
 
       ack(msg, rinfo)
 
