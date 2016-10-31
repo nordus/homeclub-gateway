@@ -14,7 +14,7 @@ gelfStream  = require('gelf-stream')
 
 module.exports = ( graylogServerIP ) ->
 
-  stream  = gelfStream.forBunyan( graylogServerIP )
+  stream  = gelfStream.forBunyan( graylogServerIP, 12202 )
 
   bunyan.createLogger
     name: 'gateway'
