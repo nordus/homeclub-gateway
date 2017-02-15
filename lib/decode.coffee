@@ -4,16 +4,17 @@ parseArgOpts =
   default:
     graylog_server_ip: (process.env.GRAYLOG_SERVER_IP ? '127.0.0.1')
 
-options = require('minimist')(process.argv.slice(2), parseArgOpts)
+options     = require('minimist')(process.argv.slice(2), parseArgOpts)
 
-ack = require './ack'
-log = require('./log')(options.graylog_server_ip)
-request = require 'request'
+ack         = require './ack'
+log         = require('./log')(options.graylog_server_ip)
+request     = require 'request'
 postWebhook = require './post-webhook'
-Firebase  = require 'firebase'
-queueRef  = new Firebase 'https://homeclub-q.firebaseio.com/queue/tasks'
+adminApp    = require './firebase-admin-app'
+queueRef    = adminApp.database().ref 'queue/tasks'
 
-carriers  = {}
+carriers    = {}
+
 request 'http://homeclub.us/api/carriers-by-network-hub',
   json  : true
 , ( err, resp, body ) ->
