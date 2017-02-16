@@ -1,3 +1,5 @@
+require('es6-shim');
+
 var trans = require('coffee-script');
 if (trans.register) {
   trans.register();
