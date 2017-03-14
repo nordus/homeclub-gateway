@@ -15,7 +15,7 @@ queueRef    = adminApp.database().ref 'queue/tasks'
 
 carriers    = {}
 
-request 'http://homeclub.us/api/carriers-by-network-hub',
+request 'http://api.homeclub.us/carriers-by-network-hub',
   json  : true
 , ( err, resp, body ) ->
   unless err
@@ -76,7 +76,7 @@ module.exports = (msg, rinfo) ->
 
       gatewayEvent = reading.msgType is 2 and reading.gatewayEventCode in [1,2]
       sensorHubEvent = reading.msgType is 4
-      url = 'http://homeclub.us/api/webhooks'
+      url = 'http://api.homeclub.us/webhooks'
 
       # `msgType1`  : ACK or outcome. SMS initiated.
       if reading.msgType is 1
