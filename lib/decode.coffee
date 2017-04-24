@@ -15,8 +15,9 @@ queueRef    = adminApp.database().ref 'queue/tasks'
 
 carriers    = {}
 
-request 'http://api.homeclub.us/carriers-by-network-hub',
-  json  : true
+request 'https://api.homeclub.us/carriers-by-network-hub',
+  json                : true
+  rejectUnauthorized  : false
 , ( err, resp, body ) ->
   unless err
     carriers  = body
